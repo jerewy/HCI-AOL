@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+#Logo {
+    width: 150px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img.clickable {
+    cursor: pointer;
+}
+
+button.clickable {
+    cursor: pointer;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+    /* Ensure navbar appears above other content */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* Add shadow */
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    margin: 0 10px;
+    /* Adjust the margin here */
+    font-weight: semibold;
+}
+
+/* Change the color of links on hover */
+.navbar a:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+/* Style the logo/image in the navbar */
+.navbar img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header {
+    margin-top: 100px;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 100px;
+}
+
+#card-1 {
+    background-image: url('./assets/card-1.png');
+    background-size: cover;
+}
+
+#card-2 {
+    background-image: url('./assets/card-2.png');
+    background-size: cover;
+}
+
+#card-3 {
+    background-image: url('./assets/card-3.png');
+    background-size: cover;
+}
+
+#card-4 {
+    background-image: url('./assets/card-4.png');
+    background-size: cover;
+}
+
+#card-5 {
+    background-image: url('./assets/card-5.png');
+    background-size: cover;
+}
+
+#card-6 {
+    background-image: url('./assets/card-6.png');
+    background-size: cover;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 380px;
+    width: 250px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover>.card:not(:hover) {
+    /* filter: blur(10px); */
+    transform: scale(0.9, 0.9);
+}
+
+#go-to-recipe {
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #e2e2e2;
+    margin: 50px;
+}
+
+section {
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}
+
+section p {
+    margin-top: 30px;
+    /* Adjust the top margin as needed */
+    margin-bottom: 30px;
+    /* Adjust the bottom margin as needed */
+    text-align: justify;
+    max-width: 1100px;
+    /* Adjust the width as needed */
+    margin-left: auto;
+    /* Center the paragraph horizontally */
+    margin-right: auto;
+    /* Center the paragraph horizontally */
+}
+
+#go-to-bmi {
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #e2e2e2;
+    margin: 50px;
+}
+
+footer {
+    background-color: #333333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p{
+    margin: 0;
+}
+
+.logo-container {
+    text-align: center; /* Center the logo horizontally */
+}
+
+.logo-container img {
+    display: inline-block; /* Ensure the image behaves like an inline block */
+    vertical-align: middle; /* Align the image vertically in the middle */
+}
+
+.copyright {
+    color: #fff; /* Change the color to match your design */
+    font-size: 14px; /* Adjust the font size as needed */
+}
+/* About Us Style */
+
+header.aboutUs {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    text-align: center;
+    height: 550px;
+    background-image: url('assets/abousUs.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 100px;
+    opacity: 0.9;
+}
+
+section.aboutUs p {
+    text-align: center;
+}
+
+.offer {
+    text-align: left;
+    max-width: 1100px;
+    /* Adjust the width as needed */
+    margin-left: auto;
+    /* Center the paragraph horizontally */
+    margin-right: auto;
+    /* Center the paragraph horizontally */
+}
+
+section .offer p {
+    text-align: left;
+}
+
+.offer h2 {
+    font-size: 18px;
+}
+
+.aboutUs.content {
+    overflow: hidden;
+    white-space: normal; /* Change to white-space: normal; */
+    margin: 0 auto;
+    /* letter-spacing: .15em; */
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    max-width: 100%; /* Adjust the max-width value as needed */
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
