@@ -133,7 +133,7 @@ header {
     transform: scale(0.9, 0.9);
 }
 
-#go-to-recipe {
+button#go-to-recipe {
     width: 150px;
     height: 50px;
     font-weight: bold;
@@ -164,7 +164,7 @@ section p {
     /* Center the paragraph horizontally */
 }
 
-#go-to-bmi {
+button#go-to-bmi {
     width: 100px;
     height: 50px;
     font-weight: bold;
@@ -310,7 +310,7 @@ input {
     font-size: 22px;
 }
 
-button {
+button#bmi-button {
     width: 200px;
     height: 35px;
     margin-top: 25px;

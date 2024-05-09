@@ -47,7 +47,7 @@ $(function() {
 });
 
 window.onload = () => {
-    const button = document.querySelector('#btn');
+    const button = document.querySelector('#bmi-button');
     button.addEventListener('click', calculateBmi);
 }
 
