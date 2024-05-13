@@ -141,3 +141,30 @@ window.addEventListener('scroll', handleScroll);
 // Initial check on page load
 handleScroll();
 
+// Animation
+// Function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to handle scroll event
+function handleScroll() {
+    const contentSections = document.querySelectorAll('.slide-up');
+    contentSections.forEach(section => {
+        if (isInViewport(section)) {
+            section.classList.add('slide-up-visible');
+        }
+    });
+}
+
+// Event listener for scroll event
+window.addEventListener('scroll', handleScroll);
+
+// Initial check on page load
+handleScroll();

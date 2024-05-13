@@ -442,8 +442,7 @@ th, td{
     display: none;
 }
 
-
-/* ANIMATION */
+/* ANIMATIONS */
 /* Define the slide-up animation */
 @keyframes slideUp {
     0% {
@@ -464,5 +463,3 @@ th, td{
 .slide-up-visible {
     opacity: 1;
 }
-
-
