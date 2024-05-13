@@ -1,0 +1,143 @@
+
+// Nav Link bottom active page
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPagePath = window.location.pathname;
+    const currentPageFilename = currentPagePath.split('/').pop();
+    const navLinks = document.querySelectorAll('.navbar a');
+
+    navLinks.forEach(link => {
+        // Extract the filename from the link's href
+        const linkPath = link.href.split('/').pop();
+
+        // Check if the link's href matches the current page filename
+        if (linkPath === currentPageFilename) {
+            // Add your desired class to the link
+            link.classList.add('active');
+        }
+    });
+});
+// End of nav link bottom active page
+
+// Home link 6 recipes
+function redirectToRecipe(recipeURL) {
+    window.location.href = recipeURL;
+}
+
+// Logo Navigation
+function redirectToHome(){
+    window.location.href = "home.html";
+}
+
+
+// BMI Calculator
+$(function() {
+    let paddingToggle = false; // Variable to track padding state
+
+    $("#toggleThis").click(function(){ 
+        $("#content").slideToggle("slow");
+
+        // Toggle padding state
+        paddingToggle = !paddingToggle;
+        
+        // Set padding-bottom based on state
+        if (paddingToggle) {
+            $("#toggleHeader").html("Why is BMI important to know? &#x25B4;"); // Change arrow to upward-pointing triangle
+        } else {
+            $("#toggleHeader").html("Why is BMI important to know? &#x25BE;"); // Change arrow to downward-pointing triangle
+        }
+    });
+});
+
+$(function() {
+    let paddingToggle = false; // Variable to track padding state
+
+    $("#toggleThis2").click(function(){ 
+        $("#content2").slideToggle("slow");
+
+        // Toggle padding state
+        paddingToggle = !paddingToggle;
+        
+        // Set padding-bottom based on state
+        if (paddingToggle) {
+            $("#toggleThis2").css("padding-bottom", "0px"); // Set padding-bottom to 0px
+            $("#toggleHeader2").html("What are the limits of BMI? &#x25B4;"); // Change arrow to upward-pointing triangle
+        } else {
+            $("#toggleThis2").css("padding-bottom", "50px"); // Set padding-bottom to its original value
+            $("#toggleHeader2").html("What are the limits of BMI? &#x25BE;"); // Change arrow to downward-pointing triangle
+        }
+    });
+});
+
+window.onload = () => {
+    const button = document.querySelector('#bmi-button');
+    button.addEventListener('click', calculateBmi);
+}
+
+function calculateBmi() {
+    const heightInput = document.querySelector('#Height');
+    const weightInput = document.querySelector('#weight');
+    const result = document.querySelector('#result');
+
+    const height = parseFloat(heightInput.value);
+    const weight = parseFloat(weightInput.value);
+
+    if (isNaN(height) || height <= 0) {
+        result.innerText = "Please provide a valid height (greater than 0).";
+        return;
+    }
+
+    if (isNaN(weight) || weight <= 0) {
+        result.innerText = "Please provide a valid weight (greater than 0).";
+        return;
+    }
+
+    const bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+
+    let bmiCategory;
+    if (bmi < 18.5) {
+        bmiCategory = "Underweight";
+    } else if (bmi < 24.9) {
+        bmiCategory = "Normal Weight";
+    } else if (bmi < 29.9) {
+        bmiCategory = "Overweight";
+    } else if (bmi < 34.9) {
+        bmiCategory = "Obesity (Class I)";
+    } else if (bmi < 39.9) {
+        bmiCategory = "Obesity (Class II)";
+    } else {
+        bmiCategory = "Extreme Obesity";
+    }
+
+    result.innerText = `Your BMI: ${bmi}\n ${bmiCategory}`;
+}
+// End of javascript for bmi calculator page
+
+
+// Js animation
+// Function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to handle scroll event
+function handleScroll() {
+    const contentSections = document.querySelectorAll('.slide-up');
+    contentSections.forEach(section => {
+        if (isInViewport(section)) {
+            section.classList.add('slide-up-visible');
+        }
+    });
+}
+
+// Event listener for scroll event
+window.addEventListener('scroll', handleScroll);
+
+// Initial check on page load
+handleScroll();
+
