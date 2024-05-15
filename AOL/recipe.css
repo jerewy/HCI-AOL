@@ -18,6 +18,7 @@ footer {
     background-color: #333333;
     padding: 20px;
     display: flex;
+    margin-top: 50px;
     justify-content: space-between;
     align-items: center;
     color: #fff;
@@ -213,6 +214,10 @@ footer .copyright {
     justify-content: center; /* Centers content vertically */
     margin: 0 auto; /* Centers the section horizontally in its parent container */
     text-align: center; /* Optional: centers text content within the section */
+}
+
+#filters{
+    margin-bottom: 50px;
 }
 
 .nutritions {
