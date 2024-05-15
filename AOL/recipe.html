@@ -10,8 +10,7 @@
     <script src="app.js"></script>
 </head>
 
-<body>
-
+<body class="recipePage">
     <nav class="navbar">
         <img src="assets/Sehatlicious-Logo.png" alt="Logo" onclick="redirectToHome()" class="clickable">
         <ul>
@@ -22,6 +21,33 @@
             <li><a href="aboutUs.html">About Us</a></li>
         </ul>
     </nav>
+
+    <section id="filters">
+        <input type="text" id="search-bar" placeholder="Search for recipes...">
+        <select id="category-filter">
+            <option value="">All Categories</option>
+            <option value="weight-gain">Weight Gain</option>
+            <option value="weight-loss">Weight Loss</option>
+            <option value="normal">Normal Food</option>
+        </select>
+        <select id="time-filter">
+            <option value="">Any Time</option>
+            <option value="under-15">Under 15 minutes</option>
+            <option value="15-30">15-30 minutes</option>
+            <option value="30-45">30-45 minutes</option>
+            <option value="45-60">45-60 minutes</option>
+            <option value="over-60">Over 60 minutes</option>
+        </select>
+    </section>
+
+    <section id="recipe-list">
+        <!-- Recipes will be displayed here -->
+    </section>
+
+    <section id="recipe-details" style="display:none;">
+        <!-- Recipe details will be displayed here -->
+        <button onclick="goBack()">Back to Recipes</button>
+    </section>
 
     <footer>
         <div class="logo-container">

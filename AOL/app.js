@@ -168,3 +168,101 @@ window.addEventListener('scroll', handleScroll);
 
 // Initial check on page load
 handleScroll();
+
+// Recipe Page JS
+// Sample recipe data
+const recipes = [
+    {
+        name: "High-Calorie Smoothie",
+        category: "weight-gain",
+        time: "under-15",
+        difficulty: "easy",
+        ingredients: ["1 banana", "1 cup whole milk", "2 tablespoons peanut butter", "1 scoop protein powder", "1 tablespoon honey", "1/2 cup oats"],
+        instructions: "Add all ingredients to a blender. Blend until smooth. Pour into a glass and enjoy."
+    },
+    {
+        name: "Grilled Chicken Salad",
+        category: "weight-loss",
+        time: "under-30",
+        difficulty: "easy",
+        ingredients: ["1 chicken breast", "2 cups mixed greens", "1/2 cup cherry tomatoes", "1/4 cup sliced cucumbers", "1/4 cup shredded carrots", "1 tablespoon olive oil", "1 tablespoon balsamic vinegar", "Salt and pepper to taste"],
+        instructions: "Grill the chicken breast until fully cooked. Slice the chicken into strips. In a bowl, combine the mixed greens, cherry tomatoes, cucumbers, and carrots. Top with grilled chicken. Drizzle with olive oil and balsamic vinegar. Season with salt and pepper. Toss to combine and serve."
+    },
+    {
+        name: "Spaghetti Carbonara",
+        category: "normal",
+        time: "30-45",
+        difficulty: "medium",
+        ingredients: ["200g spaghetti", "100g pancetta", "2 large eggs", "50g grated Parmesan cheese", "1 clove garlic, peeled and crushed", "Salt and black pepper to taste", "2 tablespoons olive oil"],
+        instructions: "Cook the spaghetti according to the package instructions. While the pasta is cooking, heat olive oil in a pan over medium heat. Add the pancetta and garlic, and cook until the pancetta is crispy. In a bowl, beat the eggs and mix in the grated Parmesan cheese. Drain the spaghetti and add it to the pan with the pancetta. Remove the pan from heat. Quickly pour in the egg and cheese mixture, stirring continuously to create a creamy sauce. Season with salt and black pepper. Serve immediately with extra Parmesan cheese on top."
+    }
+];
+
+// Function to display recipes
+function displayRecipes(recipes) {
+    const recipeList = document.getElementById('recipe-list');
+    recipeList.innerHTML = ''; // Clear previous recipes
+    recipes.forEach((recipe, index) => {
+        const recipeCard = document.createElement('div');
+        recipeCard.className = 'recipe-card';
+        recipeCard.innerHTML = `
+            <h3>${recipe.name}</h3>
+            <p>Category: ${recipe.category}</p>
+            <p>Time: ${recipe.time}</p>
+            <p>Difficulty: ${recipe.difficulty}</p>
+        `;
+        recipeCard.onclick = () => showRecipeDetails(index);
+        recipeList.appendChild(recipeCard);
+    });
+}
+
+// Function to show recipe details
+function showRecipeDetails(index) {
+    const recipe = recipes[index];
+    const recipeDetails = document.getElementById('recipe-details');
+    recipeDetails.innerHTML = `
+        <h2>${recipe.name}</h2>
+        <p>Category: ${recipe.category}</p>
+        <p>Time: ${recipe.time}</p>
+        <p>Difficulty: ${recipe.difficulty}</p>
+        <h3>Ingredients:</h3>
+        <ul>
+            ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+        </ul>
+        <h3>Instructions:</h3>
+        <p>${recipe.instructions}</p>
+        <button onclick="goBack()">Back to Recipes</button>
+    `;
+    document.getElementById('recipe-list').style.display = 'none';
+    recipeDetails.style.display = 'block';
+}
+
+// Function to go back to the recipe list
+function goBack() {
+    document.getElementById('recipe-list').style.display = 'flex';
+    document.getElementById('recipe-details').style.display = 'none';
+}
+
+// Initial display of recipes
+displayRecipes(recipes);
+
+// Filter and search functionality
+document.getElementById('search-bar').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
+    displayRecipes(filteredRecipes);
+});
+
+document.getElementById('category-filter').addEventListener('change', function() {
+    const selectedCategory = this.value;
+    const filteredRecipes = selectedCategory ? recipes.filter(recipe => recipe.category === selectedCategory) : recipes;
+    displayRecipes(filteredRecipes);
+});
+
+document.getElementById('time-filter').addEventListener('change', function() {
+    const selectedTime = this.value;
+    const filteredRecipes = selectedTime ? recipes.filter(recipe => recipe.time === selectedTime) : recipes;
+    displayRecipes(filteredRecipes);
+});
+
+// Add more event listeners for other filters as needed
