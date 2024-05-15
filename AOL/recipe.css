@@ -101,6 +101,7 @@ footer .copyright {
 
 .card {
     width: 190px;
+    height: 300px; /* Set a fixed height for the card */
     background: white;
     border-radius: 6px;
     border: 1px solid #ccc;
@@ -108,6 +109,10 @@ footer .copyright {
     transition: transform 0.2s;
     text-align: center;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Evenly distribute space between children */
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
 .card:hover {
@@ -125,6 +130,23 @@ footer .copyright {
 
 .card-image:hover {
     transform: scale(0.98);
+}
+
+.title, .category, .time {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.category, .time {
+    font-size: 12px;
+    color: #777;
 }
 
 .title {
@@ -168,6 +190,7 @@ footer .copyright {
 }
 
 #recipe-details p {
+    text-align: justify;
     margin: 10px 0;
 }
 
@@ -214,6 +237,8 @@ footer .copyright {
     justify-content: center; /* Centers content vertically */
     margin: 0 auto; /* Centers the section horizontally in its parent container */
     text-align: center; /* Optional: centers text content within the section */
+    padding-right: 200px;
+    padding-left: 200px;
 }
 
 #filters{
