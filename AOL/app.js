@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>Directions:</h3>
             <p>${recipe.instructions}</p>
             ${nutritionInfo}
-            <button onclick="goBack()">Back to Recipes</button>
+            <button class="clickable" onclick="goBack()">Back to Recipes</button>
         `;
         document.getElementById('recipe-list').style.display = 'none';
         recipeDetails.style.display = 'flex';

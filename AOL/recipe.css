@@ -227,3 +227,13 @@ footer .copyright {
     color: white;
     text-align: justify;
 }
+
+button{
+    width: 160px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #4f4f4f;
+    color: #e2e2e2;
+    margin: 50px;
+}
