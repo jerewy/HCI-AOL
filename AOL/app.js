@@ -174,28 +174,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample recipe data
     const recipes = [
         {
-            name: "High-Calorie Smoothie",
-            category: "weight-gain",
-            time: "under-15",
-            difficulty: "easy",
-            ingredients: ["1 banana", "1 cup whole milk", "2 tablespoons peanut butter", "1 scoop protein powder", "1 tablespoon honey", "1/2 cup oats"],
-            instructions: "Add all ingredients to a blender. Blend until smooth. Pour into a glass and enjoy."
-        },
-        {
-            name: "Grilled Chicken Salad",
-            category: "weight-loss",
-            time: "under-30",
-            difficulty: "easy",
-            ingredients: ["1 chicken breast", "2 cups mixed greens", "1/2 cup cherry tomatoes", "1/4 cup sliced cucumbers", "1/4 cup shredded carrots", "1 tablespoon olive oil", "1 tablespoon balsamic vinegar", "Salt and pepper to taste"],
-            instructions: "Grill the chicken breast until fully cooked. Slice the chicken into strips. In a bowl, combine the mixed greens, cherry tomatoes, cucumbers, and carrots. Top with grilled chicken. Drizzle with olive oil and balsamic vinegar. Season with salt and pepper. Toss to combine and serve."
-        },
-        {
-            name: "Spaghetti Carbonara",
+            name: "Cheesy Egg Quesadilla with Spinach",
+            description: "A quick and delicious quesadilla with spinach and a cheesy egg topping.",
             category: "normal",
-            time: "30-45",
-            difficulty: "medium",
-            ingredients: ["200g spaghetti", "100g pancetta", "2 large eggs", "50g grated Parmesan cheese", "1 clove garlic, peeled and crushed", "Salt and black pepper to taste", "2 tablespoons olive oil"],
-            instructions: "Cook the spaghetti according to the package instructions. While the pasta is cooking, heat olive oil in a pan over medium heat. Add the pancetta and garlic, and cook until the pancetta is crispy. In a bowl, beat the eggs and mix in the grated Parmesan cheese. Drain the spaghetti and add it to the pan with the pancetta. Remove the pan from heat. Quickly pour in the egg and cheese mixture, stirring continuously to create a creamy sauce. Season with salt and black pepper. Serve immediately with extra Parmesan cheese on top."
+            time: "15-30",
+            difficulty: "easy",
+            image: "Assets/Cheesy Egg Quesadilla with Spinach.jpg",
+            ingredients: [
+                "2 teaspoons extra-virgin olive oil, divided",
+                "2 cups spinach",
+                "2 corn tortillas",
+                "4 tablespoons shredded Cheddar cheese, divided",
+                "1 large egg",
+                "¼ avocado, sliced",
+                "Hot sauce (optional)"
+            ],
+            instructions: "Heat 1 teaspoon oil in a small nonstick skillet over medium-high heat. Add spinach and cook, stirring, until wilted, about 1 minute. Top 1 tortilla with 2 tablespoons cheese, the spinach and the remaining 2 tablespoons cheese. Cover with the other tortilla. Heat the remaining 1 teaspoon oil in the pan over medium-high heat. Add the quesadilla and cook, flipping once, until crispy, about 4 minutes. Transfer to a plate. Crack egg into the pan and cook until the white is set, about 4 minutes. Top the quesadilla with the egg and avocado. Serve with hot sauce, if desired."
         }
     ];
 
@@ -207,17 +201,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         recipeList.innerHTML = ''; // Clear previous recipes
+        if (recipes.length === 0) {
+            recipeList.innerHTML = '<p class="no-recipes">No recipes found.</p>';
+            return;
+        }
         recipes.forEach((recipe, index) => {
+            const recipeCardWrapper = document.createElement('div');
+            recipeCardWrapper.className = 'card-wrapper';
             const recipeCard = document.createElement('div');
             recipeCard.className = 'card';
             recipeCard.innerHTML = `
-                <div class="card-image"></div>
+                <div class="card-image" style="background-image: url('${recipe.image}')"></div>
                 <div class="title">${recipe.name}</div>
                 <div class="category">${recipe.category}</div>
                 <div class="time"><i class="fas fa-clock"></i> ${recipe.time}</div>
             `;
             recipeCard.onclick = () => showRecipeDetails(index);
-            recipeList.appendChild(recipeCard);
+            recipeCardWrapper.appendChild(recipeCard);
+            recipeList.appendChild(recipeCardWrapper);
         });
     }
 
@@ -230,6 +231,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         recipeDetails.innerHTML = `
+            <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
+            <p>${recipe.description}</p>
             <h2>${recipe.name}</h2>
             <p>Category: ${recipe.category}</p>
             <p>Time: ${recipe.time}</p>
@@ -238,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul>
                 ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
             </ul>
-            <h3>Instructions:</h3>
+            <h3>Directions:</h3>
             <p>${recipe.instructions}</p>
             <button onclick="goBack()">Back to Recipes</button>
         `;
@@ -257,22 +260,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Filter and search functionality
     document.getElementById('search-bar').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
-        displayRecipes(filteredRecipes);
+        applyFilters();
     });
 
     document.getElementById('category-filter').addEventListener('change', function() {
-        const selectedCategory = this.value;
-        const filteredRecipes = selectedCategory ? recipes.filter(recipe => recipe.category === selectedCategory) : recipes;
-        displayRecipes(filteredRecipes);
+        applyFilters();
     });
 
     document.getElementById('time-filter').addEventListener('change', function() {
-        const selectedTime = this.value;
-        const filteredRecipes = selectedTime ? recipes.filter(recipe => recipe.time === selectedTime) : recipes;
-        displayRecipes(filteredRecipes);
+        applyFilters();
     });
+
+    function applyFilters() {
+        const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+        const selectedCategory = document.getElementById('category-filter').value;
+        const selectedTime = document.getElementById('time-filter').value;
+
+        const filteredRecipes = recipes.filter(recipe => {
+            const matchesSearch = recipe.name.toLowerCase().includes(searchTerm);
+            const matchesCategory = selectedCategory ? recipe.category === selectedCategory : true;
+            const matchesTime = selectedTime ? recipe.time === selectedTime : true;
+
+            return matchesSearch && matchesCategory && matchesTime;
+        });
+
+        displayRecipes(filteredRecipes);
+    }
 });
 
 // Add more event listeners for other filters as needed

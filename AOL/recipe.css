@@ -93,24 +93,29 @@ footer .copyright {
     justify-content: center;
 }
 
-.recipe-card {
+/* Wrapper for cards to add margin */
+.card-wrapper {
+    margin: 10px;
+}
+
+.card {
     width: 190px;
     background: white;
     border-radius: 6px;
     border: 1px solid #ccc;
-    margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     text-align: center;
     cursor: pointer;
 }
 
-.recipe-card:hover {
+.card:hover {
     transform: scale(1.02);
 }
 
 .card-image {
-    background-color: rgb(236, 236, 236);
+    background-size: cover;
+    background-position: center;
     width: 100%;
     height: 130px;
     border-radius: 6px 6px 0 0;
@@ -155,8 +160,40 @@ footer .copyright {
     padding: 20px;
 }
 
+#recipe-details img.recipe-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#recipe-details p {
+    margin: 10px 0;
+}
+
+#recipe-details h2 {
+    margin: 20px 0 10px;
+}
+
+#recipe-details h3 {
+    margin: 20px 0 10px;
+}
+
+#recipe-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    display: inline-block;
+}
+
 #recipe-details button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
+}
+
+/* No recipes found message */
+.no-recipes {
+    font-size: 18px;
+    color: #666;
+    margin: 20px;
 }
