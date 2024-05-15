@@ -1,0 +1,109 @@
+header {
+    margin-top: 100px;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 100px;
+}
+
+#card-1 {
+    background-image: url('./assets/card-1.png');
+    background-size: cover;
+}
+
+#card-2 {
+    background-image: url('./assets/card-2.png');
+    background-size: cover;
+}
+
+#card-3 {
+    background-image: url('./assets/card-3.png');
+    background-size: cover;
+}
+
+#card-4 {
+    background-image: url('./assets/card-4.png');
+    background-size: cover;
+}
+
+#card-5 {
+    background-image: url('./assets/card-5.png');
+    background-size: cover;
+}
+
+#card-6 {
+    background-image: url('./assets/card-6.png');
+    background-size: cover;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 380px;
+    width: 250px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover>.card:not(:hover) {
+    /* filter: blur(10px); */
+    transform: scale(0.9, 0.9);
+}
+
+button#go-to-recipe {
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #e2e2e2;
+    margin: 50px;
+}
+
+section {
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}
+
+section p {
+    margin-top: 30px;
+    /* Adjust the top margin as needed */
+    margin-bottom: 30px;
+    /* Adjust the bottom margin as needed */
+    text-align: justify;
+    max-width: 1100px;
+    /* Adjust the width as needed */
+    margin-left: auto;
+    /* Center the paragraph horizontally */
+    margin-right: auto;
+    /* Center the paragraph horizontally */
+}
+
+button#go-to-bmi {
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #e2e2e2;
+    margin: 50px;
+}
