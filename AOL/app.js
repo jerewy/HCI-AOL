@@ -189,8 +189,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 "¼ avocado, sliced",
                 "Hot sauce (optional)"
             ],
-            instructions: "Heat 1 teaspoon oil in a small nonstick skillet over medium-high heat. Add spinach and cook, stirring, until wilted, about 1 minute. Top 1 tortilla with 2 tablespoons cheese, the spinach and the remaining 2 tablespoons cheese. Cover with the other tortilla. Heat the remaining 1 teaspoon oil in the pan over medium-high heat. Add the quesadilla and cook, flipping once, until crispy, about 4 minutes. Transfer to a plate. Crack egg into the pan and cook until the white is set, about 4 minutes. Top the quesadilla with the egg and avocado. Serve with hot sauce, if desired."
+            instructions: "Heat 1 teaspoon oil in a small nonstick skillet over medium-high heat. Add spinach and cook, stirring, until wilted, about 1 minute. Top 1 tortilla with 2 tablespoons cheese, the spinach and the remaining 2 tablespoons cheese. Cover with the other tortilla. Heat the remaining 1 teaspoon oil in the pan over medium-high heat. Add the quesadilla and cook, flipping once, until crispy, about 4 minutes. Transfer to a plate. Crack egg into the pan and cook until the white is set, about 4 minutes. Top the quesadilla with the egg and avocado. Serve with hot sauce, if desired.",
+            nutrition: {
+                servingsPerRecipe: 1,
+                servingSize: "1 quesadilla",
+                calories: 481,
+                totalCarbohydrate: "31g",
+                dietaryFiber: "9g",
+                totalSugars: "1g",
+                protein: "19g",
+                totalFat: "32g",
+                saturatedFat: "9g",
+                cholesterol: "214mg",
+                sodium: "367mg",
+                potassium: "423mg"
+            }
         }
+        // Add more recipes here as needed
     ];
 
     // Function to display recipes
@@ -230,6 +245,27 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Recipe details element not found");
             return;
         }
+    
+        const nutritionInfo = `
+            <div class="nutritions">
+                <h3>Nutrition Facts</h3>
+                <ul>
+                    <li>Servings Per Recipe: ${recipe.nutrition.servingsPerRecipe}</li>
+                    <li>Serving Size: ${recipe.nutrition.servingSize}</li>
+                    <li>Calories: ${recipe.nutrition.calories}</li>
+                    <li>Total Carbohydrate: ${recipe.nutrition.totalCarbohydrate}</li>
+                    <li>Dietary Fiber: ${recipe.nutrition.dietaryFiber}</li>
+                    <li>Total Sugars: ${recipe.nutrition.totalSugars}</li>
+                    <li>Protein: ${recipe.nutrition.protein}</li>
+                    <li>Total Fat: ${recipe.nutrition.totalFat}</li>
+                    <li>Saturated Fat: ${recipe.nutrition.saturatedFat}</li>
+                    <li>Cholesterol: ${recipe.nutrition.cholesterol}</li>
+                    <li>Sodium: ${recipe.nutrition.sodium}</li>
+                    <li>Potassium: ${recipe.nutrition.potassium}</li>
+                </ul>
+            </div>
+        `;
+    
         recipeDetails.innerHTML = `
             <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
             <p>${recipe.description}</p>
@@ -243,11 +279,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </ul>
             <h3>Directions:</h3>
             <p>${recipe.instructions}</p>
+            ${nutritionInfo}
             <button onclick="goBack()">Back to Recipes</button>
         `;
         document.getElementById('recipe-list').style.display = 'none';
-        recipeDetails.style.display = 'block';
-    }
+        recipeDetails.style.display = 'flex';
+    }    
 
     // Function to go back to the recipe list
     window.goBack = function() {

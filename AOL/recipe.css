@@ -197,3 +197,33 @@ footer .copyright {
     color: #666;
     margin: 20px;
 }
+
+/* Parent container to ensure the section is centered in the page */
+.parent-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust based on your layout needs */
+}
+
+#recipe-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    margin: 0 auto; /* Centers the section horizontally in its parent container */
+    text-align: center; /* Optional: centers text content within the section */
+}
+
+.nutritions {
+    border-radius: 25px;
+    background-color: #acacac;
+    padding: 20px;
+    width: 400px;
+    height: auto;
+}
+
+.nutritions p {
+    color: white;
+    text-align: justify;
+}
