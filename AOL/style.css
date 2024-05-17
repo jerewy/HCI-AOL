@@ -79,12 +79,15 @@ button.clickable {
     border-bottom-color: #000; /* Change the border color for active link */
 }
 
+/* Footer style*/
+
 footer {
     background-color: #333333;
     padding: 20px;
     display: flex;
-    justify-content: space-between; /* Adjust to your preference */
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 footer p {
@@ -92,42 +95,121 @@ footer p {
 }
 
 .logo-container {
-    text-align: center; /* Center the logo horizontally */
+    text-align: center;
 }
 
 .logo-container img {
-    display: inline-block; /* Ensure the image behaves like an inline block */
-    vertical-align: middle; /* Align the image vertically in the middle */
-}
-
-.copyright {
-    color: #fff; /* Change the color to match your design */
-    font-size: 14px; /* Adjust the font size as needed */
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .footer-links ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .footer-links li {
     display: inline;
-    margin-right: 20px; /* Adjust the spacing between links */
-}
-
-.footer-links li:last-child {
-    margin-right: 0; /* Remove margin for the last link */
 }
 
 footer .footer-links a {
-    color: #fff; /* Change the link color to white */
-    text-decoration: none; /* Remove the underline */
+    color: #fff;
+    text-decoration: none;
 }
 
 .footer-links a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
+
+.card-footer{
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.socialContainer {
+    width: 52px;
+    height: 52px;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .3s;
+}
+
+.containerOne:hover {
+    background-color: #d62976;
+    transition-duration: .3s;
+}
+
+.containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: .3s;
+}
+
+.containerThree:hover {
+    background-color: #0072b1;
+    transition-duration: .3s;
+}
+
+.containerFour:hover {
+    background-color: #128C7E;
+    transition-duration: .3s;
+}
+
+.socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+}
+
+.socialSvg {
+    width: 17px;
+}
+
+.socialSvg path {
+    fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.copyright {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.contact-info {
+    color: #fff;
+    margin: 20px 0;
+}
+
+.contact-info h3 {
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
 
 /* ANIMATIONS */
 /* Define the slide-up animation */
