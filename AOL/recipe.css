@@ -241,8 +241,21 @@ footer .copyright {
     padding-left: 200px;
 }
 
-#filters{
+#filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between the elements */
     margin-bottom: 50px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+#filters input, #filters select {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    flex: 1; /* Allow elements to grow and fill the space */
+    max-width: 300px; /* Adjust the max-width as needed */
 }
 
 .nutritions {

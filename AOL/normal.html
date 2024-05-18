@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehatlicious</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="exerciseHomePage.css">
+    <link rel="stylesheet" href="exercise.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="app.js"></script>
 </head>
@@ -25,61 +24,41 @@
     </nav>
 
     <div class="container">
-        <div class="centered-text">
-            <div class="main-text">
-                Build Your Perfect Body
-            </div>
-            <div class="sub-text">
-                According To Your BMI
+        <h1 class="title">Maintaining Health: A Comprehensive Guide to Balanced Exercise</h1>
+        <div class="content">
+            <img src="Assets/normal1.jpg" alt="Healthy Exercise" class="exercise-image">
+            <div class="text">
+                <p>Maintaining a healthy lifestyle involves regular exercise and a balanced diet. Here's a guide to help you stay fit and healthy through a variety of exercises.</p>
+                <p><strong>Recommendations for Maintaining Health</strong></p>
+                <ul>
+                    <li>Engage in at least 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous-intensity aerobic activity per week.</li>
+                    <li>Incorporate strength training exercises for all major muscle groups at least two days per week.</li>
+                    <li>Eat a balanced diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats.</li>
+                    <li>Stay hydrated by drinking plenty of water throughout the day.</li>
+                    <li>Get enough sleep each night to support overall health and recovery.</li>
+                </ul>
+                <p><strong>Diverse Exercises for Overall Fitness</strong></p>
+                <p>There are various types of exercises you can incorporate into your routine to maintain overall fitness:</p>
+                <ul>
+                    <li><strong>Cardiovascular Exercise:</strong> Activities such as brisk walking, jogging, cycling, swimming, or dancing improve cardiovascular health and endurance.</li>
+                    <li><strong>Strength Training:</strong> Exercises targeting major muscle groups with body weight, resistance bands, or free weights enhance strength and tone.</li>
+                    <li><strong>Flexibility and Balance:</strong> Activities like yoga, Pilates, or tai chi improve flexibility, balance, and overall well-being.</li>
+                </ul>
+                <p><strong>Sample Workout Routine</strong></p>
+                <p>Here's a sample workout routine for maintaining overall health and fitness:</p>
+                <img src="Assets/normal2.png" alt="Healthy Exercise" class="exercise-image">
+                <p><strong>Notes:</strong></p>
+                <ul>
+                    <li>Listen to your body and modify exercises as needed to suit your fitness level and any existing health conditions.</li>
+                    <li>Stay consistent with your exercise routine and aim for gradual progress over time.</li>
+                    <li>Consult with a healthcare professional before starting any new exercise program, especially if you have any underlying health concerns or medical conditions.</li>
+                </ul>
+                <p>You can add variation to exercises by trying different variations and incorporating external resistance, such as dumbbells or resistance bands, to increase intensity. Remember to track your progress and celebrate your achievements along the way!</p>
             </div>
         </div>
-
-        <div class="card__container">
-            <article class="card__article">
-                <a href="underweight.html">
-                    <img src="assets/thin.jpg" alt="image" class="card__img clickable">
-                </a>
-                <div class="card__data">
-                    <span class="card__description">BMI Below 18.5</span>
-                    <h2 class="card__title">Underweight</h2>
-                    <a href="underweight.html" class="card__button">Read More</a>
-                </div>
-            </article>
-        
-            <article class="card__article">
-                <a href="normal.html">
-                    <img src="assets/normal.jpg" alt="image" class="card__img clickable">
-                </a>
-                <div class="card__data">
-                    <span class="card__description">BMI 18.5-24.9</span>
-                    <h2 class="card__title">Normal</h2>
-                    <a href="normal.html" class="card__button">Read More</a>
-                </div>
-            </article>
-        
-            <article class="card__article">
-                <a href="overweight.html">
-                    <img src="assets/fat.jpg" alt="image" class="card__img clickable">
-                </a>
-                <div class="card__data">
-                    <span class="card__description">BMI 25.0-29.9</span>
-                    <h2 class="card__title">Overweight</h2>
-                    <a href="overweight.html" class="card__button">Read More</a>
-                </div>
-            </article>
-        
-            <article class="card__article">
-                <a href="obese.html">
-                    <img src="assets/obese.jpg" alt="image" class="card__img clickable">
-                </a>
-                <div class="card__data">
-                    <span class="card__description">BMI 30 and Above</span>
-                    <h2 class="card__title">Obese & Above</h2>
-                    <a href="obese.html" class="card__button">Read More</a>
-                </div>
-            </article>
-        </div>        
+        <button id="go-to-bmi" onclick="window.location.href='exercise.html'" class="clickable">Go Back</button>
     </div>
+    
 
     <footer>
         <div class="logo-container">
