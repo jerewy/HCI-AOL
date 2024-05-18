@@ -23,10 +23,21 @@
             <li><a href="aboutUs.html">About Us</a></li>
         </ul>
     </nav>
+
     <header class="slide-up">
         <h1>Sehatlicious: Eat Healthy, Live Well</h1>
         <h2>Discover a world of flavorful and nutrious recipes that are easy to make.</h2>
-        <div class="cards">
+
+        <div class="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <!-- Carousel items will be injected here by JavaScript -->
+            </div>
+            <a class="carousel-control-prev" onclick="prevSlide()">&#10094;</a>
+            <a class="carousel-control-next" onclick="nextSlide()">&#10095;</a>
+        </div>
+        
+
+        <!-- <div class="cards">
             <div id="card-1" class="card" onclick="redirectToRecipe('recipe.html')"></div>
             <div id="card-2" class="card" onclick="redirectToRecipe('recipe.html')"></div>
             <div id="card-3" class="card" onclick="redirectToRecipe('recipe.html')"></div>
@@ -34,8 +45,8 @@
             <div id="card-5" class="card" onclick="redirectToRecipe('recipe.html')"></div>
             <div id="card-6" class="card" onclick="redirectToRecipe('recipe.html')"></div>
         </div>
+        <button id="go-to-recipe" onclick="window.location.href='recipe.html'" class="clickable">More Recipes</button> -->
         <button id="go-to-recipe" onclick="window.location.href='recipe.html'" class="clickable">More Recipes</button>
-
     </header>
 
     <section>

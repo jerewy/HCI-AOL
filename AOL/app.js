@@ -935,3 +935,70 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Add more event listeners for other filters as needed
+
+document.addEventListener('DOMContentLoaded', function() {
+    const recipes = [
+        { name: "Cheesy Egg Quesadilla with Spinach", image: "Assets/Cheesy Egg Quesadilla with Spinach.jpg" },
+        { name: "Strawberry Banana Green Smoothie", image: "assets/Strawberry-Banana Green Smoothie.jpg" },
+        { name: "Raspberry Yogurt Cereal Bowl", image: "assets/Raspberry Yogurt Cereal Bowl.jpg" },
+        { name: "Strawberry Oat Muffin", image: "Assets/Strawberry Oat Muffin.jpg" },
+        { name: "Salad with Spinach & Egg", image: "Assets/Salad with Spinach & Egg.jpg" },
+        { name: "Veggie Black Bean Enchiladas", image: "Assets/Veggie Black Bean Enchiladas.jpg" },
+        { name: "Perfect Baked Sweet Potato", image: "assets/Perfect Baked Sweet Potato.jpg" },
+        { name: "Colorful Veggie Sesame Noodles", image: "Assets/Colorful Veggie Sesame Noodles.jpg" },
+        { name: "Mushroom & Tofu Stir-Fry", image: "Assets/Mushroom & Tofu Stir-Fry.jpg" },
+        { name: "One-Pot Creamy Chicken & Mushroom Pasta", image: "Assets/One-Pot Creamy Chicken & Mushroom Pasta.jpg" },
+        { name: "Menemen (Turkish Scrambled Eggs with Tomatoes)", image: "Assets/Menemen (Turkish Scrambled Eggs with Tomatoes).jpg" },
+        { name: "Creamy Chicken Pasta with Brussels Sprouts & Artichokes", image: "Assets/Creamy Chicken Pasta with Brussels Sprouts & Artichokes.jpg" },
+        { name: "Roasted Chicken Tenders with Peppers & Onions", image: "Assets/Roasted Chicken Tenders with Peppers & Onions.jpg" },
+        { name: "Gluten-Free Teriyaki Chicken with Broccoli", image: "Assets/Gluten-Free Teriyaki Chicken with Broccoli.jpg" },
+        { name: "Shrimp Pad Thai", image: "Assets/Shrimp Pad Thai.jpg" },
+        { name: "Honey-Garlic Chicken Casserole", image: "Assets/Honey-Garlic Chicken Casserole.jpg" }
+    ];
+
+    function loadCarousel() {
+        const carouselInner = document.getElementById('carousel-inner');
+        recipes.forEach((recipe) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.backgroundImage = `url('${recipe.image}')`;
+            card.innerHTML = `<div class="title"></div>`; // No name in the div card
+            card.onclick = function() {
+                window.location.href = 'recipe.html';
+            };
+            carouselInner.appendChild(card);
+        });
+    }
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.card');
+        if (index >= slides.length - 5) { // Adjust to prevent blank cards
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 6; // Adjust to show the last 6 cards
+        } else {
+            currentSlide = index;
+        }
+        const offset = -currentSlide * (100 / 6); // Move the carousel by one card width
+        document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+    }
+
+    window.nextSlide = function() {
+        showSlide(currentSlide + 1);
+    };
+
+    window.prevSlide = function() {
+        showSlide(currentSlide - 1);
+    };
+
+    // Auto slide every 2 seconds
+    setInterval(nextSlide, 2000);
+
+    // Initial load
+    loadCarousel();
+    showSlide(currentSlide);
+});
+
+

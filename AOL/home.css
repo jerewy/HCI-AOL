@@ -6,65 +6,63 @@ header {
     padding-bottom: 50px;
 }
 
-.cards {
+.carousel {
+    position: relative;
+    max-width: 1600px; /* Adjust the width as needed */
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-inner {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 15px;
-    padding: 10px 100px;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    gap: 15px; /* Add gap between cards */
+    padding: 0 15px; /* Add padding to match the gap on both sides */
 }
 
-#card-1 {
-    background-image: url('./assets/Honey-Garlic Chicken Casserole.jpg');
-    background-size: cover;
-}
-
-#card-2 {
-    background-image: url('./assets/Gluten-Free\ Teriyaki\ Chicken\ with\ Broccoli.jpg');
-    background-size: cover;
-}
-
-#card-3 {
-    background-image: url('./assets/Menemen\ \(Turkish\ Scrambled\ Eggs\ with\ Tomatoes\).jpg');
-    background-size: cover;
-}
-
-#card-4 {
-    background-image: url('./assets/One-Pot\ Creamy\ Chicken\ &\ Mushroom\ Pasta.jpg');
-    background-size: cover;
-}
-
-#card-5 {
-    background-image: url('./assets/Perfect\ baked\ sweet\ potato.jpg');
-    background-size: cover;
-}
-
-#card-6 {
-    background-image: url('./assets/Shrimp\ Pad\ Thai.jpg');
-    background-size: cover;
-}
-
-.cards .card {
+.card {
+    flex: 1 0 calc(16.66% - 15px); /* Adjust width to account for gap */
+    max-width: calc(16.66% - 15px); /* Adjust max-width to account for gap */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     height: 380px;
-    width: 250px;
     border-radius: 10px;
     color: white;
     cursor: pointer;
     transition: 400ms;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    margin: 0; /* Reset margin if any */
 }
 
-.cards .card:hover {
+.card:hover {
     transform: scale(1.1, 1.1);
 }
 
-.cards:hover>.card:not(:hover) {
-    /* filter: blur(10px); */
-    transform: scale(0.9, 0.9);
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+    border: none;
+    border-radius: 50%;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
 }
 
 button {
@@ -117,3 +115,5 @@ section p {
     margin-right: auto;
     /* Center the paragraph horizontally */
 }
+
+
