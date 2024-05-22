@@ -78,6 +78,7 @@ button:active {
     text-align: justify;
     margin-top: 10px;
     font-size: 20px;
+    margin-bottom:  100px;
 }
 
 .box h3 { 
@@ -123,7 +124,7 @@ th, td{
     text-align: justify;
 }
 
-#toggleThis {
+#toggleThis, #toggleThis2 {
     padding: auto;
     width: 100%;
     background: #F2F1F1;
@@ -131,12 +132,26 @@ th, td{
     cursor: pointer;
 }
 
-#content {
-    padding: 15px;
+#content{
     width: 100%;
     text-align: justify;
     font-size: 20px;
-    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.6s ease-out, padding-bottom 0.6s ease-out, margin-bottom 0.6s ease-out;
+}
+
+#content2 {
+    width: 100%;
+    text-align: justify;
+    font-size: 20px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.6s ease-out, padding-bottom 0.6s ease-out, margin-bottom 0.6s ease-out;
+}
+
+.expanded {
+    max-height: 1000px; /* A higher value to accommodate dynamic content */
 }
 
 .list {
@@ -144,10 +159,10 @@ th, td{
 }
 
 #toggleThis2 {
-    border-radius: 30px;
-    margin-bottom: 40px;
-    padding: auto;
+    margin-bottom: 50px;
     padding-bottom: 50px;
+    border-radius: 30px;
+    padding: auto;
     width: 100%;
     background: #F2F1F1;
     text-align: end;
@@ -155,15 +170,6 @@ th, td{
 }
 
 #toggleThis2.expanded {
-    padding-bottom: 0;
-}
-
-#content2 {
-    margin-bottom: 100px;
-    padding: 15px;
-    padding-bottom: 100px;
-    width: 100%;
-    text-align: justify;
-    font-size: 20px;
-    display: none;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }

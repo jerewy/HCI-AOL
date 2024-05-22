@@ -1,82 +1,94 @@
-
-// Nav Link bottom active page
 document.addEventListener('DOMContentLoaded', function() {
     const currentPagePath = window.location.pathname;
     const currentPageFilename = currentPagePath.split('/').pop();
     const navLinks = document.querySelectorAll('.navbar a');
 
     navLinks.forEach(link => {
-        // Extract the filename from the link's href
         const linkPath = link.href.split('/').pop();
-
-        // Check if the link's href matches the current page filename
         if (linkPath === currentPageFilename) {
-            // Add your desired class to the link
             link.classList.add('active');
         }
     });
 });
-// End of nav link bottom active page
 
-// Home link 6 recipes
 function redirectToRecipe(recipeURL) {
     window.location.href = recipeURL;
 }
 
-// Logo Navigation
-function redirectToHome(){
+function redirectToHome() {
     window.location.href = "home.html";
 }
 
+// Function to handle slide toggle with animation
+function slideToggle(element, duration = 300) {
+    const content = element;
+    const isHidden = !content.classList.contains('expanded');
 
-// BMI Calculator
-$(function() {
-    let paddingToggle = false; // Variable to track padding state
+    if (isHidden) {
+        content.style.display = 'block';
+        const height = content.scrollHeight;
+        content.style.maxHeight = '0';
+        content.offsetHeight; // Trigger reflow to apply the maxHeight of 0
+        content.style.transition = `max-height ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out, margin-bottom ${duration}ms ease-in-out`;
+        content.style.maxHeight = `${height}px`;
+    } else {
+        content.style.maxHeight = `${content.scrollHeight}px`;
+        content.offsetHeight; // Trigger reflow to ensure the current maxHeight is applied
+        content.style.transition = `max-height ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out, margin-bottom ${duration}ms ease-in-out`;
+        content.style.maxHeight = '0';
+    }
 
-    $("#toggleThis").click(function(){ 
-        $("#content").slideToggle("slow");
-
-        // Toggle padding state
-        paddingToggle = !paddingToggle;
-        
-        // Set padding-bottom based on state
-        if (paddingToggle) {
-            $("#toggleHeader").html("Why is BMI important to know? &#x25B4;"); // Change arrow to upward-pointing triangle
-        } else {
-            $("#toggleHeader").html("Why is BMI important to know? &#x25BE;"); // Change arrow to downward-pointing triangle
+    setTimeout(() => {
+        if (!isHidden) {
+            content.style.display = 'none';
         }
-    });
-});
-
-$(function() {
-    let paddingToggle = false; // Variable to track padding state
-
-    $("#toggleThis2").click(function(){ 
-        $("#content2").slideToggle("slow");
-
-        // Toggle padding state
-        paddingToggle = !paddingToggle;
-        
-        // Set padding-bottom based on state
-        if (paddingToggle) {
-            $("#toggleThis2").css("padding-bottom", "0px"); // Set padding-bottom to 0px
-            $("#toggleHeader2").html("What are the limits of BMI? &#x25B4;"); // Change arrow to upward-pointing triangle
-        } else {
-            $("#toggleThis2").css("padding-bottom", "50px"); // Set padding-bottom to its original value
-            $("#toggleHeader2").html("What are the limits of BMI? &#x25BE;"); // Change arrow to downward-pointing triangle
-        }
-    });
-});
-
-window.onload = () => {
-    const button = document.querySelector('#bmi-button');
-    button.addEventListener('click', calculateBmi);
+        content.style.transition = null;
+        content.classList.toggle('expanded');
+    }, duration);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("toggleThis").addEventListener('click', function() {
+        const content = document.getElementById("content");
+        slideToggle(content, 300);
+        const header = document.getElementById("toggleHeader");
+        setTimeout(() => {
+            if (content.classList.contains('expanded')) {
+                header.innerHTML = "Why is BMI important to know? &#x25B4;";
+            } else {
+                header.innerHTML = "Why is BMI important to know? &#x25BE;";
+            }
+        }, 300); // Match the duration with the slideToggle function
+    });
+
+    document.getElementById("toggleThis2").addEventListener('click', function() {
+        const content2 = document.getElementById("content2");
+        slideToggle(content2, 300);
+        const header2 = document.getElementById("toggleHeader2");
+        const toggleThis2 = document.getElementById("toggleThis2");
+        setTimeout(() => {
+            if (content2.classList.contains('expanded')) {
+                header2.innerHTML = "What are the limits of BMI? &#x25B4;";
+                toggleThis2.style.paddingBottom = '0px';
+                toggleThis2.style.marginBottom = '0px';
+            } else {
+                header2.innerHTML = "What are the limits of BMI? &#x25BE;";
+                toggleThis2.style.paddingBottom = '50px';
+                toggleThis2.style.marginBottom = '50px';
+            }
+        }, 300); // Match the duration with the slideToggle function
+    });
+
+    const button = document.getElementById('bmi-button');
+    if (button) {
+        button.addEventListener('click', calculateBmi);
+    }
+});
+
 function calculateBmi() {
-    const heightInput = document.querySelector('#Height');
-    const weightInput = document.querySelector('#weight');
-    const result = document.querySelector('#result');
+    const heightInput = document.getElementById('Height');
+    const weightInput = document.getElementById('weight');
+    const result = document.getElementById('result');
 
     const height = parseFloat(heightInput.value);
     const weight = parseFloat(weightInput.value);
@@ -110,11 +122,7 @@ function calculateBmi() {
 
     result.innerText = `Your BMI: ${bmi}\n ${bmiCategory}`;
 }
-// End of javascript for bmi calculator page
 
-
-// Js animation
-// Function to check if an element is in the viewport
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -125,7 +133,6 @@ function isInViewport(element) {
     );
 }
 
-// Function to handle scroll event
 function handleScroll() {
     const contentSections = document.querySelectorAll('.slide-up');
     contentSections.forEach(section => {
@@ -135,41 +142,9 @@ function handleScroll() {
     });
 }
 
-// Event listener for scroll event
 window.addEventListener('scroll', handleScroll);
+document.addEventListener('DOMContentLoaded', handleScroll);
 
-// Initial check on page load
-handleScroll();
-
-// Animation
-// Function to check if an element is in the viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Function to handle scroll event
-function handleScroll() {
-    const contentSections = document.querySelectorAll('.slide-up');
-    contentSections.forEach(section => {
-        if (isInViewport(section)) {
-            section.classList.add('slide-up-visible');
-        }
-    });
-}
-
-// Event listener for scroll event
-window.addEventListener('scroll', handleScroll);
-
-// Initial check on page load
-handleScroll();
-
-// Recipe Page JS
 document.addEventListener('DOMContentLoaded', function() {
     // Sample recipe data
     const recipes = [
@@ -817,7 +792,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more recipes here as needed
     ];
 
-    // Function to display recipes
     function displayRecipes(recipes) {
         const recipeList = document.getElementById('recipe-list');
         if (!recipeList) {
@@ -838,7 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card-image" style="background-image: url('${recipe.image}')"></div>
                 <div class="title">${recipe.name}</div>
                 <div class="category">${recipe.category}</div>
-                <div class="time"><i class="fas fa-clock"></i> ${recipe.time}</div>
+                <div class="time"><span class="material-icons">access_time</span> ${recipe.time}</div>
             `;
             recipeCard.onclick = () => showRecipeDetails(index);
             recipeCardWrapper.appendChild(recipeCard);
@@ -846,7 +820,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to show recipe details
     function showRecipeDetails(index) {
         const recipe = recipes[index];
         const recipeDetails = document.getElementById('recipe-details');
@@ -854,7 +827,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Recipe details element not found");
             return;
         }
-    
+
         const nutritionInfo = `
             <div class="nutritions">
                 <h3>Nutrition Facts</h3>
@@ -874,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </div>
         `;
-    
+
         recipeDetails.innerHTML = `
             <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
             <p>${recipe.description}</p>
@@ -893,18 +866,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.getElementById('recipe-list').style.display = 'none';
         recipeDetails.style.display = 'flex';
-    }    
+    }
 
-    // Function to go back to the recipe list
     window.goBack = function() {
         document.getElementById('recipe-list').style.display = 'flex';
         document.getElementById('recipe-details').style.display = 'none';
     };
 
-    // Initial display of recipes
     displayRecipes(recipes);
 
-    // Filter and search functionality
     document.getElementById('search-bar').addEventListener('input', function() {
         applyFilters();
     });
@@ -1000,5 +970,4 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCarousel();
     showSlide(currentSlide);
 });
-
 
