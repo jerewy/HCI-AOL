@@ -124,15 +124,8 @@ th, td{
     text-align: justify;
 }
 
-#toggleThis, #toggleThis2 {
-    padding: auto;
-    width: 100%;
-    background: #F2F1F1;
-    text-align: end;
-    cursor: pointer;
-}
-
 #content{
+    display: none;
     width: 100%;
     text-align: justify;
     font-size: 20px;
@@ -142,6 +135,8 @@ th, td{
 }
 
 #content2 {
+    padding-bottom: 50px;
+    display: none;
     width: 100%;
     text-align: justify;
     font-size: 20px;
@@ -158,8 +153,19 @@ th, td{
     margin-left: 100px;
 }
 
+#toggleThis, #toggleThis2 {
+    padding: auto;
+    width: 100%;
+    background: #F2F1F1;
+    text-align: end;
+    cursor: pointer;
+}
+
+#toggleThis{
+    padding-bottom: 0px;
+}
+
 #toggleThis2 {
-    margin-bottom: 50px;
     padding-bottom: 50px;
     border-radius: 30px;
     padding: auto;
@@ -170,6 +176,6 @@ th, td{
 }
 
 #toggleThis2.expanded {
-    padding-bottom: 0 !important;
+    padding-bottom: 0px !important;
     margin-bottom: 0 !important;
 }

@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 header2.innerHTML = "What are the limits of BMI? &#x25B4;";
                 toggleThis2.style.paddingBottom = '0px';
                 toggleThis2.style.marginBottom = '0px';
+                content2.style.paddingBottom = '50px';
             } else {
                 header2.innerHTML = "What are the limits of BMI? &#x25BE;";
                 toggleThis2.style.paddingBottom = '50px';
