@@ -172,10 +172,18 @@ footer .copyright {
 }
 
 .time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: gray;
     font-weight: 400;
     font-size: 11px;
     padding-top: 20px;
+}
+
+.material-icons {
+    font-size: 1.2em;
+    margin-right: 5px;
 }
 
 #recipe-details {

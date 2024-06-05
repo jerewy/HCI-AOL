@@ -813,7 +813,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="card-image" style="background-image: url('${recipe.image}')"></div>
                 <div class="title">${recipe.name}</div>
                 <div class="category">${recipe.category}</div>
-                <div class="time"><span class="material-icons">access_time</span> ${recipe.time}</div>
+                <div class="time"><span class="material-icons">access_time</span> ${recipe.time} mins</div>
             `;
             recipeCard.onclick = () => showRecipeDetails(index);
             recipeCardWrapper.appendChild(recipeCard);
