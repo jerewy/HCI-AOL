@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+#Logo {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img.clickable {
+    cursor: pointer;
+}
+
+button.clickable {
+    cursor: pointer;
+}
+
 /* BMI Style */
 .page-title {
     text-align: center;
@@ -6,16 +31,17 @@
 }
 
 .desc {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin: 0 auto;
     text-align: justify;
     margin-top: 10px;
     font-size: 20px;
+    max-width: 800px; /* Added max-width for better responsiveness */
 }
 
 .container-bmi {
     margin: 50px auto;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     background-color: #D9D9D9;
     padding: 50px;
     border-radius: 30px;
@@ -73,25 +99,17 @@ button:active {
 .box {
     border-radius: 30px;
     background-color: #F2F1F1;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 0 auto;
     text-align: justify;
     margin-top: 10px;
     font-size: 20px;
-    margin-bottom:  100px;
+    margin-bottom: 100px;
+    max-width: 800px; /* Added max-width for better responsiveness */
+    padding: 20px;
 }
 
-.box h3 { 
-    padding-top: 30px;
-    margin-right: 100px;
-    margin-left: 100px;
-    text-align: justify;
-}
-
-.box p {
-    margin-right: 100px;
-    margin-left: 100px;
-    text-align: justify;
+.box h3, .box p {
+    padding: 0 10px; /* Added padding for better readability */
 }
 
 .box img {
@@ -99,12 +117,12 @@ button:active {
     margin-right: 10px;
 }
 
-table{
+table {
     color: white;
     width: 350px;
 }
 
-th, td{
+th, td {
     text-align: left;
     padding: 4px;
 }
@@ -112,30 +130,51 @@ th, td{
 .box2 {
     border-radius: 30px;
     background-color: #655E5E;
-    border-radius: 25px;
     padding: 20px;
-    width: 400px;
-    height: auto;
-    margin-left: 100px;
-}
-
-.box2 p {
-    color: white;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto; /* Centered the box2 */
     text-align: justify;
+    color: white; /* Set text color to white */
 }
 
-#content{
-    display: none;
-    width: 100%;
-    text-align: justify;
-    font-size: 20px;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.6s ease-out, padding-bottom 0.6s ease-out, margin-bottom 0.6s ease-out;
+.classification {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#content2 {
-    padding-bottom: 50px;
+.classification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #4e4b4b; /* Slightly darker background for items */
+    border-radius: 10px;
+}
+
+.classification-title {
+    flex: 1;
+    text-align: left;
+}
+
+.classification-bmi {
+    flex: 1;
+    text-align: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .classification-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .classification-title, .classification-bmi {
+        text-align: center;
+    }
+}
+
+#content, #content2 {
     display: none;
     width: 100%;
     text-align: justify;
@@ -157,11 +196,11 @@ th, td{
     padding: auto;
     width: 100%;
     background: #F2F1F1;
-    text-align: end;
+    text-align: start;
     cursor: pointer;
 }
 
-#toggleThis{
+#toggleThis {
     padding-bottom: 0px;
 }
 
@@ -171,11 +210,78 @@ th, td{
     padding: auto;
     width: 100%;
     background: #F2F1F1;
-    text-align: end;
+    text-align: start;
     cursor: pointer;
 }
 
 #toggleThis2.expanded {
     padding-bottom: 0px !important;
     margin-bottom: 0 !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .desc, .box, .box h3, .box p {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .box2 {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desc, .box, .box h3, .box p, .box2 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .container-bmi {
+        width: 100%;
+        padding: 20px;
+    }
+    input {
+        font-size: 18px;
+    }
+    button {
+        padding: 1em 2em;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 24px;
+    }
+    .desc {
+        font-size: 16px;
+    }
+    .container-bmi {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    input {
+        font-size: 16px;
+    }
+    button {
+        padding: 0.8em 1.5em;
+        font-size: 8px;
+    }
+    #result {
+        font-size: 20px;
+    }
+    .box {
+        font-size: 16px;
+    }
+    .box h3, .box p {
+        padding: 0 10px;
+    }
+    .box2 {
+        font-size: 16px;
+    }
+    #content, #content2 {
+        font-size: 16px;
+    }
 }
